@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WCR Grab Hire | Essex & London's Most Trusted Grab Hire Service</title>
+  <meta name="description" content="WCR Grab Hire - Essex & London's #1 rated grab hire, muck away, aggregates delivery and waste removal service. Over 15 years experience. Call 07903 280097." />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #F97316;
+      --primary-dark: #EA580C;
+      --dark: #1a1a2e;
+      --darker: #0f0f1a;
+      --gray: #6b7280;
+      --light-gray: #f3f4f6;
+      --white: #ffffff;
+    }
+    body { font-family: 'Inter', sans-serif; color: #333; line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; border: none; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(249,115,22,0.4); }
+    .btn-outline { background: transparent; color: white; border: 2px solid white; }
+    .btn-outline:hover { background: white; color: var(--dark); }
+    .section-title { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 1rem; }
+    .section-subtitle { text-align: center; color: var(--gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto 3rem; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(15,15,26,0.95); backdrop-filter: blur(10px); padding: 12px 0; transition: all 0.3s; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { height: 45px; width: 45px; border-radius: 8px; object-fit: cover; }
+    .nav-logo span { color: white; font-size: 1.3rem; font-weight: 800; }
+    .nav-logo .highlight { color: var(--primary); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: #ccc; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-phone { color: var(--primary) !important; font-weight: 700 !important; font-size: 1rem !important; }
+    .mobile-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+    /* HERO */
+    .hero { min-height: 100vh; background: linear-gradient(135deg, rgba(15,15,26,0.92), rgba(15,15,26,0.75)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80') center/cover no-repeat; display: flex; align-items: center; padding-top: 80px; position: relative; }
+    .hero-content { max-width: 700px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(249,115,22,0.15); color: var(--primary); padding: 8px 18px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; margin-bottom: 24px; border: 1px solid rgba(249,115,22,0.3); }
+    .hero h1 { color: white; font-size: 3.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+    .hero h1 .highlight { color: var(--primary); }
+    .hero p { color: #bbb; font-size: 1.15rem; margin-bottom: 32px; max-width: 550px; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .hero-stat { text-align: center; }
+    .hero-stat .number { color: var(--primary); font-size: 2rem; font-weight: 900; }
+    .hero-stat .label { color: #999; font-size: 0.85rem; margin-top: 4px; }
+
+    /* TRUST BAR */
+    .trust-bar { background: var(--dark); padding: 24px 0; }
+    .trust-bar .container { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; color: #ccc; font-size: 0.95rem; }
+    .trust-item i { color: var(--primary); font-size: 1.2rem; }
+
+    /* SERVICES */
+    .services { padding: 100px 0; background: var(--light-gray); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+    .service-card img { width: 100%; height: 220px; object-fit: cover; }
+    .service-card-body { padding: 24px; }
+    .service-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { color: var(--gray); font-size: 0.95rem; }
+
+    /* WHY CHOOSE */
+    .why-choose { padding: 100px 0; }
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .why-card { display: flex; gap: 20px; padding: 28px; border-radius: 16px; background: white; box-shadow: 0 2px 15px rgba(0,0,0,0.06); transition: all 0.3s; }
+    .why-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.12); transform: translateY(-4px); }
+    .why-icon { flex-shrink: 0; width: 60px; height: 60px; border-radius: 14px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; }
+    .why-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    .why-card p { color: var(--gray); font-size: 0.95rem; }
+
+    /* HOW IT WORKS */
+    .how-it-works { padding: 100px 0; background: var(--darker); color: white; }
+    .how-it-works .section-subtitle { color: #999; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 20px; }
+    .step { text-align: center; position: relative; }
+    .step-number { width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 900; color: white; margin: 0 auto 20px; }
+    .step h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+    .step p { color: #999; font-size: 0.95rem; }
+
+    /* AGGREGATES */
+    .aggregates { padding: 100px 0; background: var(--light-gray); }
+    .agg-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .agg-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s; text-align: center; }
+    .agg-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+    .agg-card img { width: 100%; height: 160px; object-fit: cover; }
+    .agg-card h4 { padding: 14px 10px; font-size: 0.95rem; font-weight: 600; }
+
+    /* WASTE TYPES */
+    .waste { padding: 100px 0; }
+    .waste-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .waste-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.3s; text-align: center; }
+    .waste-card:hover { transform: translateY(-4px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+    .waste-card img { width: 100%; height: 150px; object-fit: cover; }
+    .waste-card h4 { padding: 14px 10px; font-size: 0.9rem; font-weight: 600; }
+
+    /* GALLERY */
+    .gallery { padding: 100px 0; background: var(--darker); color: white; }
+    .gallery .section-subtitle { color: #999; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .gallery-grid img { width: 100%; height: 280px; object-fit: cover; border-radius: 12px; transition: transform 0.3s; }
+    .gallery-grid img:hover { transform: scale(1.03); }
+
+    /* REVIEWS */
+    .reviews { padding: 100px 0; background: var(--light-gray); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card { background: white; padding: 32px; border-radius: 16px; box-shadow: 0 2px 15px rgba(0,0,0,0.06); }
+    .review-stars { color: #FBBF24; font-size: 1.1rem; margin-bottom: 16px; }
+    .review-card p { color: #555; font-size: 0.95rem; font-style: italic; margin-bottom: 20px; line-height: 1.7; }
+    .review-author { font-weight: 700; color: var(--dark); }
+
+    /* CTA */
+    .cta { padding: 80px 0; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); text-align: center; color: white; }
+    .cta h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 16px; }
+    .cta p { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: white; color: var(--primary); font-weight: 700; }
+    .btn-white:hover { background: #f3f4f6; transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer { background: var(--darker); color: #999; padding: 60px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-about p { font-size: 0.9rem; line-height: 1.7; margin-top: 12px; }
+    footer h4 { color: white; font-size: 1rem; margin-bottom: 16px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 10px; }
+    footer ul a { color: #999; font-size: 0.9rem; transition: color 0.3s; }
+    footer ul a:hover { color: var(--primary); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+    .footer-socials { display: flex; gap: 16px; }
+    .footer-socials a { color: #999; font-size: 1.2rem; transition: color 0.3s; }
+    .footer-socials a:hover { color: var(--primary); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .services-grid, .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .agg-grid { grid-template-columns: repeat(3, 1fr); }
+      .waste-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.4rem; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .section-title { font-size: 2rem; }
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .services-grid, .reviews-grid, .steps { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .agg-grid { grid-template-columns: repeat(2, 1fr); }
+      .waste-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .agg-grid { grid-template-columns: 1fr; }
+      .waste-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero-buttons { flex-direction: column; }
+    }
+
+    /* WhatsApp float */
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 999; transition: transform 0.3s; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a href="#" class="nav-logo">
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=100&h=100&fit=crop&q=80" alt="WCR Grab Hire Logo" />
+        <span>WCR <span class="highlight">Grab Hire</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#aggregates">Aggregates</a>
+        <a href="#why">Why Us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="tel:07903280097" class="nav-phone"><i class="fas fa-phone"></i> 07903 280097</a>
+      </div>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-trophy"></i> #1 Rated in Essex & London</div>
+        <h1>Essex & London's Most Trusted <span class="highlight">Grab Hire</span></h1>
+        <p>Run by Dave and his expert team. Over 15 years of reliable grab hire, muck away, aggregates delivery and waste removal services across Essex and London.</p>
+        <div class="hero-buttons">
+          <a href="tel:07903280097" class="btn btn-primary"><i class="fas fa-phone"></i> Call Now - 07903 280097</a>
+          <a href="https://wa.me/4407903280097" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">15+</div><div class="label">Years Experience</div></div>
+        <div class="hero-stat"><div class="number">7M+</div><div class="label">Tons Moved</div></div>
+        <div class="hero-stat"><div class="number">10,000+</div><div class="label">Happy Customers</div></div>
+        <div class="hero-stat"><div class="number">5.0</div><div class="label">Star Rating</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-item"><i class="fas fa-shield-halved"></i> Fully Licensed & Insured</div>
+      <div class="trust-item"><i class="fas fa-recycle"></i> 95% Waste Recycled</div>
+      <div class="trust-item"><i class="fas fa-clock"></i> Same-Day Service Available</div>
+      <div class="trust-item"><i class="fas fa-star"></i> 5-Star Google Reviews</div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">Professional grab hire and waste removal services across Essex and London</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=600&h=400&fit=crop&q=80" alt="Grab Hire Service" />
+          <div class="service-card-body">
+            <h3>Grab Hire</h3>
+            <p>Our fleet of grab lorries can access tight spaces and load up to 16 tonnes per trip. Perfect for construction waste, soil, and rubble removal.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1590496794008-383c8070b257?w=600&h=400&fit=crop&q=80" alt="Muck Away Service" />
+          <div class="service-card-body">
+            <h3>Muck Away</h3>
+            <p>Fast and efficient muck away services for construction sites, driveways, and garden projects. We handle all the heavy lifting.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop&q=80" alt="Aggregates Delivery" />
+          <div class="service-card-body">
+            <h3>Aggregates Delivery</h3>
+            <p>Wide range of aggregates delivered to your site including MOT Type 1, ballast, sharp sand, topsoil, and crushed concrete.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1592256616895-82aead1d6683?w=600&h=400&fit=crop&q=80" alt="Tipper Hire Service" />
+          <div class="service-card-body">
+            <h3>Tipper Hire</h3>
+            <p>Reliable tipper lorries for all your haulage needs. Available for both short and long-term hire across Essex and London.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=600&h=400&fit=crop&q=80" alt="Waste Removal" />
+          <div class="service-card-body">
+            <h3>Waste Removal</h3>
+            <p>Licensed waste carriers ensuring responsible disposal and recycling. We handle construction waste, green waste, and mixed waste.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop&q=80" alt="Site Clearance" />
+          <div class="service-card-body">
+            <h3>Site Clearance</h3>
+            <p>Complete site clearance services for demolition projects, land clearance, and pre-build preparation. Efficient and thorough.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="why-choose" id="why">
+    <div class="container">
+      <h2 class="section-title">Why Choose WCR?</h2>
+      <p class="section-subtitle">Trusted by thousands of customers across Essex and London</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-truck-monster"></i></div>
+          <div><h3>Tight Access Specialists</h3><p>Our grab lorries are equipped to access restricted spaces that other companies can't reach. No job is too tricky for our experienced operators.</p></div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-bolt"></i></div>
+          <div><h3>Same-Day Service</h3><p>Need it done urgently? We offer same-day and next-day services across Essex and London. Just give us a call.</p></div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-recycle"></i></div>
+          <div><h3>95% Recycling Rate</h3><p>We're committed to sustainability. 95% of all waste we collect is recycled or reused, keeping it out of landfill.</p></div>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i class="fas fa-file-shield"></i></div>
+          <div><h3>Fully Licensed</h3><p>Fully licensed waste carriers with all necessary permits and insurance. Complete peace of mind for every job.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Three simple steps to get your job done</p>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><h3>Get a Free Quote</h3><p>Call or WhatsApp us with details of your job. We'll give you a competitive, no-obligation quote within minutes.</p></div>
+        <div class="step"><div class="step-number">2</div><h3>Schedule Your Service</h3><p>Pick a date and time that suits you. We offer flexible scheduling including same-day and weekend services.</p></div>
+        <div class="step"><div class="step-number">3</div><h3>Get It Done</h3><p>Our experienced team arrives on time and gets the job done efficiently. It's that simple.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGGREGATES -->
+  <section class="aggregates" id="aggregates">
+    <div class="container">
+      <h2 class="section-title">Aggregates We Supply</h2>
+      <p class="section-subtitle">Quality aggregates delivered direct to your site across Essex and London</p>
+      <div class="agg-grid">
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=300&fit=crop&q=80" alt="MOT Type 1" /><h4>MOT Type 1</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=400&h=300&fit=crop&q=80" alt="Type 1 Granite" /><h4>Type 1 Granite</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1509267930799-3e4596c34a0b?w=400&h=300&fit=crop&q=80" alt="Ballast" /><h4>Ballast</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=300&fit=crop&q=80" alt="Sharp Sand" /><h4>Sharp Sand</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1617952783057-afea37f35625?w=400&h=300&fit=crop&q=80" alt="Hardcore" /><h4>Hardcore</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop&q=80" alt="Topsoil" /><h4>Topsoil</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1597423244036-ef5d9b545e48?w=400&h=300&fit=crop&q=80" alt="Crushed Concrete" /><h4>Crushed Concrete</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop&q=80" alt="Limestone" /><h4>Limestone</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop&q=80" alt="Road Planings" /><h4>Road Planings</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1509266272358-7701da638078?w=400&h=300&fit=crop&q=80" alt="Shingle" /><h4>Shingle</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1590859808308-3d2d9c515b1a?w=400&h=300&fit=crop&q=80" alt="Cement" /><h4>Cement</h4></div>
+        <div class="agg-card"><img src="https://images.unsplash.com/photo-1560264280-88b68371db39?w=400&h=300&fit=crop&q=80" alt="Permeable Stone" /><h4>Permeable Stone</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WASTE TYPES -->
+  <section class="waste">
+    <div class="container">
+      <h2 class="section-title">Waste We Handle</h2>
+      <p class="section-subtitle">Licensed to collect and responsibly dispose of all types of waste</p>
+      <div class="waste-grid">
+        <div class="waste-card"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop&q=80" alt="Construction Waste" /><h4>Construction Waste</h4></div>
+        <div class="waste-card"><img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?w=400&h=300&fit=crop&q=80" alt="Soil & Muck" /><h4>Soil & Muck</h4></div>
+        <div class="waste-card"><img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=300&fit=crop&q=80" alt="Green Waste" /><h4>Green Waste</h4></div>
+        <div class="waste-card"><img src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=400&h=300&fit=crop&q=80" alt="Mixed General Waste" /><h4>Mixed General Waste</h4></div>
+        <div class="waste-card"><img src="https://images.unsplash.com/photo-1617952783057-afea37f35625?w=400&h=300&fit=crop&q=80" alt="Concrete & Rubble" /><h4>Concrete & Rubble</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery">
+    <div class="container">
+      <h2 class="section-title">Our Fleet & Work</h2>
+      <p class="section-subtitle">See our grab lorries and team in action across Essex and London</p>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=600&h=400&fit=crop&q=80" alt="WCR Grab Lorry in action" />
+        <img src="https://images.unsplash.com/photo-1590496794008-383c8070b257?w=600&h=400&fit=crop&q=80" alt="WCR team at work" />
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop&q=80" alt="Construction site clearance" />
+        <img src="https://images.unsplash.com/photo-1592256616895-82aead1d6683?w=600&h=400&fit=crop&q=80" alt="Tipper truck delivering aggregates" />
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=400&fit=crop&q=80" alt="Aggregates delivery" />
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=400&fit=crop&q=80" alt="WCR team" />
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <p class="section-subtitle">Don't just take our word for it — hear from our happy customers</p>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Absolutely fantastic service from Dave and his team. They arrived on time, were incredibly professional, and had my driveway cleared in no time. Will definitely use again!"</p>
+          <div class="review-author">Michelle Lucas</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Used WCR for muck away on our building project. Great price, fast service, and very friendly team. Highly recommended for anyone in Essex needing grab hire."</p>
+          <div class="review-author">Scott Bartlett</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Best grab hire company in Essex by far. They managed to get into a really tight space that two other companies said was impossible. Top quality work."</p>
+          <div class="review-author">James Mitchell</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <p>Call Dave and his team today for a free, no-obligation quote. Same-day service available across Essex and London.</p>
+      <div class="cta-buttons">
+        <a href="tel:07903280097" class="btn btn-white"><i class="fas fa-phone"></i> Call 07903 280097</a>
+        <a href="https://wa.me/4407903280097" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h4>WCR Grab Hire</h4>
+          <p>Essex & London's most trusted grab hire service. Over 15 years of experience in grab hire, muck away, aggregates delivery, and waste removal. Run by Dave and his expert team.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Grab Hire</a></li>
+            <li><a href="#services">Muck Away</a></li>
+            <li><a href="#services">Aggregates Delivery</a></li>
+            <li><a href="#services">Tipper Hire</a></li>
+            <li><a href="#services">Waste Removal</a></li>
+            <li><a href="#services">Site Clearance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Aggregates</h4>
+          <ul>
+            <li><a href="#aggregates">MOT Type 1</a></li>
+            <li><a href="#aggregates">Ballast</a></li>
+            <li><a href="#aggregates">Sharp Sand</a></li>
+            <li><a href="#aggregates">Topsoil</a></li>
+            <li><a href="#aggregates">Crushed Concrete</a></li>
+            <li><a href="#aggregates">Limestone</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:07903280097"><i class="fas fa-phone"></i> 07903 280097</a></li>
+            <li><a href="https://wa.me/4407903280097"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+            <li><i class="fas fa-map-marker-alt"></i> Essex & London</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 WCR Grab Hire. All rights reserved.</span>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/4407903280097" class="whatsapp-float" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Nav scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.style.padding = '8px 0';
+        nav.style.background = 'rgba(15,15,26,0.98)';
+      } else {
+        nav.style.padding = '12px 0';
+        nav.style.background = 'rgba(15,15,26,0.95)';
+      }
+    });
+
+    // Animate on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .why-card, .agg-card, .waste-card, .review-card, .step').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'all 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
